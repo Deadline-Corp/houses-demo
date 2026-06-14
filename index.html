@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Тёплый дом под ключ — подбор за минуту</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F3EC; --surface:#FFFFFF; --ink:#221E19; --muted:#6E665C; --line:#E7E0D4;
+    --accent:#C2683E; --accent-d:#A8542E; --accent-soft:#F6E9E0; --dark:#221E19;
+    --radius:18px; --font:'Outfit',-apple-system,'Segoe UI',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#fff;border:none;font-family:var(--font);font-weight:600;font-size:16px;padding:15px 28px;border-radius:99px;cursor:pointer;transition:background .15s,transform .1s}
+  .btn:hover{background:var(--accent-d)}.btn:active{transform:translateY(1px)}
+  .btn--ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn--lg{font-size:17px;padding:17px 34px}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+  h2.sec{font-size:clamp(26px,4vw,40px);font-weight:800;letter-spacing:-.025em;line-height:1.1;margin:12px 0 14px}
+
+  /* nav */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+  .logo{font-weight:800;font-size:20px;letter-spacing:-.01em}
+  .logo b{color:var(--accent)}
+  nav .links{display:flex;gap:26px;font-size:15px;color:var(--muted)}
+  nav .links a:hover{color:var(--ink)}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:40px 0 70px}
+  .hero h1{font-size:clamp(34px,5vw,58px);font-weight:900;letter-spacing:-.03em;line-height:1.04}
+  .hero h1 em{color:var(--accent);font-style:normal}
+  .hero p{color:var(--muted);font-size:19px;margin:20px 0 28px;max-width:46ch}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hstats{display:flex;gap:30px;margin-top:34px}
+  .hstats b{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em}
+  .hstats span{font-size:13px;color:var(--muted)}
+  .hero-img{border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;box-shadow:0 40px 80px -34px rgba(34,30,25,.4)}
+  .hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+
+  /* quiz */
+  .quiz-sec{background:var(--dark);color:#F7F3EC;padding:64px 0}
+  .quiz-card{background:#2B2620;border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:34px;max-width:760px;margin:24px auto 0}
+  .qhead{text-align:center;max-width:620px;margin:0 auto}
+  .qhead h2{font-size:clamp(24px,3.5vw,34px);font-weight:800;letter-spacing:-.02em}
+  .qhead p{color:#B7AE9F;margin-top:8px}
+  .qprog{height:6px;background:rgba(255,255,255,.12);border-radius:99px;overflow:hidden;margin:24px 0 22px}
+  .qprog i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .4s ease;width:25%}
+  .qstep{font-size:13px;color:#B7AE9F;font-weight:600;margin-bottom:6px}
+  .qtitle{font-size:21px;font-weight:700;letter-spacing:-.01em;margin-bottom:18px}
+  .qgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .qopt{background:#221E19;border:1.5px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden;cursor:pointer;transition:border-color .15s,transform .1s;text-align:left}
+  .qopt:hover{border-color:var(--accent)}.qopt:active{transform:scale(.99)}
+  .qopt img{width:100%;height:120px;object-fit:cover;display:block}
+  .qopt .lbl{padding:12px 14px;font-weight:600;font-size:15px}
+  .qopt .lbl small{display:block;color:#B7AE9F;font-weight:400;font-size:12.5px;margin-top:2px}
+  .qopt.simple{padding:18px 16px}
+  .qopt.simple b{font-weight:600;font-size:16px}
+  .qopt.simple span{display:block;color:#B7AE9F;font-size:13px;margin-top:3px}
+  .qfield{margin-bottom:12px}
+  .qfield label{display:block;font-size:13px;color:#B7AE9F;margin-bottom:6px}
+  .qfield input{width:100%;background:#221E19;border:1.5px solid rgba(255,255,255,.14);border-radius:12px;padding:13px 15px;color:#fff;font-size:15px;font-family:var(--font)}
+  .qfield input:focus{outline:none;border-color:var(--accent)}
+  .qback{background:none;border:none;color:#B7AE9F;font-family:var(--font);font-size:14px;cursor:pointer;margin-top:14px}
+  /* result */
+  .qresult{text-align:center}
+  .qresult .rimg{border-radius:16px;overflow:hidden;max-width:420px;margin:6px auto 18px;aspect-ratio:16/10}
+  .qresult .rimg img{width:100%;height:100%;object-fit:cover}
+  .qresult h3{font-size:24px;font-weight:800;letter-spacing:-.02em}
+  .qresult .price{font-size:30px;font-weight:900;color:var(--accent);margin:10px 0 4px;letter-spacing:-.02em}
+  .qresult .pn{color:#B7AE9F;font-size:14px}
+  .qresult .ok{margin-top:18px;background:rgba(194,104,62,.16);border:1px solid rgba(194,104,62,.4);border-radius:12px;padding:13px 16px;font-size:14.5px;color:#F0D9CB}
+
+  /* features */
+  section{padding:64px 0}
+  .feat{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
+  .fcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .fcard .fi{width:46px;height:46px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .fcard h3{font-size:17px;font-weight:700;margin-bottom:6px}
+  .fcard p{font-size:14px;color:var(--muted)}
+
+  /* gallery */
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
+  .gal img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;display:block}
+  .gal img:first-child{grid-column:span 2;aspect-ratio:2/1}
+
+  /* steps */
+  .build{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:34px}
+  .bstep{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 14px;position:relative}
+  .bstep .n{font-size:13px;font-weight:800;color:var(--accent)}
+  .bstep b{display:block;font-size:14.5px;font-weight:600;margin-top:8px}
+
+  /* reviews */
+  .revs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+  .rev{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .rev p{font-size:15px}
+  .rev .who{display:flex;align-items:center;gap:11px;margin-top:14px;font-size:13px;color:var(--muted)}
+  .rev .who i{width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-style:normal;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px}
+
+  /* final cta */
+  .cta{background:var(--accent);color:#fff;border-radius:24px;padding:54px;text-align:center;margin:20px 0}
+  .cta h2{font-size:clamp(24px,3.5vw,36px);font-weight:800;letter-spacing:-.02em;max-width:20ch;margin:0 auto 10px}
+  .cta p{opacity:.92;max-width:46ch;margin:0 auto 24px}
+  .cta .btn{background:#fff;color:var(--accent)}
+  footer{padding:40px 0;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid var(--line)}
+  .disc{text-align:center;font-size:12px;color:var(--muted);padding:0 0 30px}
+
+  @media(max-width:880px){
+    .hero{grid-template-columns:1fr;gap:28px;padding-top:20px}
+    .hero-img{order:-1}
+    .feat,.build,.revs{grid-template-columns:1fr 1fr}
+    .gal{grid-template-columns:1fr 1fr}.gal img:first-child{grid-column:span 2}
+    nav .links{display:none}
+    .quiz-card{padding:22px}
+    .cta{padding:34px}
+  }
+  @media(max-width:520px){
+    .qgrid{grid-template-columns:1fr}
+    .feat,.build,.revs{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="logo">AMG<b>·</b>Group</div>
+    <div class="links"><a href="#feat">Почему мы</a><a href="#gal">Дома</a><a href="#how">Как строим</a></div>
+    <button class="btn" onclick="scrollQuiz()">Подобрать дом</button>
+  </nav>
+
+  <section class="hero" style="padding-top:10px">
+    <div>
+      <p class="eyebrow">Дома из тёплого бетона</p>
+      <h1>Тёплый дом под ключ — <em>за 30 дней</em></h1>
+      <p>Строим из нового материала — тёплого бетона. Экономия на отоплении, скорость и честная цена. Подберите свой дом за минуту и получите расчёт.</p>
+      <div class="hero-cta">
+        <button class="btn btn--lg" onclick="scrollQuiz()">Подобрать свой дом →</button>
+        <a class="btn btn--ghost btn--lg" href="#gal">Смотреть дома</a>
+      </div>
+      <div class="hstats">
+        <div><b>120+</b><span>домов построено</span></div>
+        <div><b>30 дней</b><span>средний срок</span></div>
+        <div><b>5 лет</b><span>гарантия</span></div>
+      </div>
+    </div>
+    <div class="hero-img"><img src="img/villa.jpg" alt="Дом из тёплого бетона"></div>
+  </section>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-sec" id="quiz">
+  <div class="wrap">
+    <div class="qhead">
+      <p class="eyebrow">Подбор за минуту</p>
+      <h2>Какой дом вам подойдёт?</h2>
+      <p>4 коротких шага — и вы увидите свой вариант с ориентиром по цене. Без звонков и форм «перезвоним».</p>
+    </div>
+    <div class="quiz-card">
+      <div class="qprog"><i id="qbar"></i></div>
+      <div id="qbody"></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="feat">
+    <p class="eyebrow">Почему тёплый бетон</p>
+    <h2 class="sec">Тепло, быстро и честно по цене</h2>
+    <div class="feat">
+      <div class="fcard"><div class="fi"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2c1.5 3-1 4.5-1 6.6 0 1.4 1 2.4 2.2 2.4s2.2-1 2.2-2.6c1.6 1.6 2.4 3.6 2.4 5.4A5.8 5.8 0 1 1 6 13c0-4 3-5 5-11z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div><h3>Тёплый</h3><p>Стены держат тепло — счёт за отопление ниже до 40%.</p></div>
+      <div class="fcard"><div class="fi"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M12 2L4 12h6l-1 8 9-12h-6l1-6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div><h3>Быстрый</h3><p>Коробка под крышу — за пару недель, под ключ — за 30 дней.</p></div>
+      <div class="fcard"><div class="fi"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3v16M7 7h6a2.5 2.5 0 0 1 0 5H8a2.5 2.5 0 0 0 0 5h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><h3>Доступный</h3><p>Дешевле кирпича при том же сроке службы и комфорте.</p></div>
+      <div class="fcard"><div class="fi"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 19c4-1 7-4 7-9V5l-7-2-7 2v5c0 5 3 8 7 9z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div><h3>Надёжный</h3><p>Не горит, не гниёт, не боится влаги. Гарантия 5 лет.</p></div>
+    </div>
+  </section>
+
+  <section id="gal" style="padding-top:10px">
+    <p class="eyebrow">Наши дома</p>
+    <h2 class="sec">Построенные проекты</h2>
+    <div class="gal">
+      <img src="img/family.jpg" alt=""><img src="img/cottage.jpg" alt="">
+      <img src="img/dacha.jpg" alt=""><img src="img/villa.jpg" alt="">
+    </div>
+  </section>
+
+  <section id="how" style="padding-top:10px">
+    <p class="eyebrow">Прозрачно</p>
+    <h2 class="sec">Как мы строим</h2>
+    <div class="build">
+      <div class="bstep"><span class="n">01</span><b>Заявка и расчёт</b></div>
+      <div class="bstep"><span class="n">02</span><b>Проект и смета</b></div>
+      <div class="bstep"><span class="n">03</span><b>Фундамент</b></div>
+      <div class="bstep"><span class="n">04</span><b>Коробка из тёплого бетона</b></div>
+      <div class="bstep"><span class="n">05</span><b>Кровля и отделка</b></div>
+      <div class="bstep"><span class="n">06</span><b>Ключи и гарантия</b></div>
+    </div>
+  </section>
+
+  <section style="padding-top:10px">
+    <p class="eyebrow">Отзывы</p>
+    <h2 class="sec">Что говорят владельцы</h2>
+    <div class="revs">
+      <div class="rev"><p>«Заехали через месяц после заявки. Зимой за отопление платим заметно меньше, чем соседи в кирпиче.»</p><div class="who"><i>АС</i>Аскар С. · Алматинская обл.</div></div>
+      <div class="rev"><p>«Сначала не верил в сроки. По факту — коробка встала за 12 дней, без сюрпризов по смете.»</p><div class="who"><i>ГТ</i>Гульнара Т. · Шымкент</div></div>
+      <div class="rev"><p>«Понравилось, что всё по этапам и фото с площадки каждый день. Дом тёплый, стены толстые.»</p><div class="who"><i>МК</i>Марат К. · Астана</div></div>
+    </div>
+  </section>
+
+  <div class="cta">
+    <h2>Узнайте цену своего дома за минуту</h2>
+    <p>Пройдите короткий подбор — пришлём ориентир по цене и срокам под ваш участок.</p>
+    <button class="btn btn--lg" onclick="scrollQuiz()">Подобрать дом</button>
+  </div>
+
+  <footer>
+    <div class="logo">AMG<b>·</b>Group · дома из тёплого бетона</div>
+    <div>Казахстан · +7 778 999 9666</div>
+  </footer>
+</div>
+<div class="disc">Демонстрационная версия для обсуждения · цены и фото показательные.</div>
+
+<script>
+const TYPES = {
+  dacha:{name:'Дача',img:'img/dacha.jpg',sub:'до 60 м², сезонный отдых',base:8},
+  cottage:{name:'Коттедж 1 этаж',img:'img/cottage.jpg',sub:'для ПМЖ, одна семья',base:15},
+  family:{name:'Семейный 2 этажа',img:'img/family.jpg',sub:'просторный, для большой семьи',base:25},
+  villa:{name:'Вилла',img:'img/villa.jpg',sub:'премиум, панорамные окна',base:40},
+};
+const state={type:null,area:null,when:null,name:'',phone:''};
+let step=1;
+const AREAS=[['до 60 м²',1],['60–100 м²',1.4],['100–150 м²',1.9],['150+ м²',2.6]];
+
+function scrollQuiz(){ document.getElementById('quiz').scrollIntoView({behavior:'smooth'}); }
+function setBar(){ document.getElementById('qbar').style.width=(step/4*100)+'%'; }
+
+function render(){
+  setBar();
+  const b=document.getElementById('qbody');
+  if(step===1){
+    b.innerHTML='<div class="qstep">Шаг 1 из 4</div><div class="qtitle">Какой дом рассматриваете?</div><div class="qgrid">'+
+      Object.entries(TYPES).map(([k,t])=>`<button class="qopt" onclick="pick('type','${k}')"><img src="${t.img}"><div class="lbl">${t.name}<small>${t.sub}</small></div></button>`).join('')+'</div>';
+  } else if(step===2){
+    b.innerHTML='<div class="qstep">Шаг 2 из 4</div><div class="qtitle">Какая площадь нужна?</div><div class="qgrid">'+
+      AREAS.map((a,i)=>`<button class="qopt simple" onclick="pick('area',${i})"><b>${a[0]}</b></button>`).join('')+'</div>'+back();
+  } else if(step===3){
+    b.innerHTML='<div class="qstep">Шаг 3 из 4</div><div class="qtitle">Когда планируете строить?</div><div class="qgrid">'+
+      [['Как можно скорее','asap'],['В ближайшие 1–3 месяца','soon'],['В этом сезоне','season'],['Пока просто смотрю','look']]
+      .map(o=>`<button class="qopt simple" onclick="pick('when','${o[1]}')"><b>${o[0]}</b></button>`).join('')+'</div>'+back();
+  } else if(step===4){
+    b.innerHTML='<div class="qstep">Шаг 4 из 4 — последний</div><div class="qtitle">Куда прислать расчёт?</div>'+
+      '<div class="qfield"><label>Как вас зовут</label><input id="qn" placeholder="Имя"></div>'+
+      '<div class="qfield"><label>Телефон / WhatsApp</label><input id="qp" placeholder="+7 ___ ___ __ __"></div>'+
+      '<button class="btn btn--lg" style="width:100%;margin-top:6px" onclick="finish()">Получить расчёт →</button>'+back();
+  } else { result(); }
+}
+function back(){ return '<button class="qback" onclick="step--;render()">← назад</button>'; }
+function pick(key,val){ state[key]=val; step++; render(); }
+function finish(){
+  state.name=(document.getElementById('qn').value||'').trim();
+  state.phone=(document.getElementById('qp').value||'').trim();
+  step=5; render();
+}
+function result(){
+  const t=TYPES[state.type]||TYPES.cottage;
+  const mult=AREAS[state.area!=null?state.area:1][1];
+  const price=Math.round(t.base*mult);
+  const b=document.getElementById('qbody');
+  document.getElementById('qbar').style.width='100%';
+  b.innerHTML=`<div class="qresult">
+    <div class="qstep">Ваш подбор готов</div>
+    <div class="rimg"><img src="${t.img}"></div>
+    <h3>${t.name}${state.area!=null?', '+AREAS[state.area][0]:''}</h3>
+    <div class="price">от ${price} млн ₸</div>
+    <div class="pn">ориентировочно, под ключ · точную смету пришлёт менеджер</div>
+    <div class="ok">Заявка принята${state.name?', '+state.name:''}! Менеджер свяжется по WhatsApp и пришлёт расчёт под ваш участок.</div>
+    <button class="qback" onclick="step=1;state.type=null;render()">↻ пройти заново</button>
+  </div>`;
+}
+render();
+</script>
+</body>
+</html>
